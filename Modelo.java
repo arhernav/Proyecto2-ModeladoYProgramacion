@@ -27,6 +27,24 @@ public class Modelo{
 	
     }
 
+    /**
+     * Metodo para cerrar sesion
+     */
+    public void cerrarSesion(){
+	this.usuarioActivo = null;
+    }
+
+    /**
+     * Metodo para añadir un gasto a la cuenta
+     * @param Gasto Gasto a añadir a la cuenta
+     */
+    public void añadirGasto(Gasto gasto){
+	System.out.println("///////////////implementar////////");
+    }
+
+    
+    
+
     
     
 
