@@ -8,15 +8,6 @@ public class Modelo{
     /* Hashtable que almacena los usuarios de la aplicacion */
     protected Hashtable<String, Usuario> usuarios;
 
-    /* Estado actual de la aplicacion */
-    protected EstadoModelo estadoActual;
-
-    /* Estado de sesion iniciada de la aplicacion*/
-    protected SesionIniciada sesionIniciada;
-
-    /* Estado de sesion no inicicada de la aplicacion */
-    protected SinSesion sinSesion;
-
     /* Usuario que esta usando la aplicacion */
     protected Usuario usuarioActivo;
 
@@ -24,8 +15,16 @@ public class Modelo{
     /**
      * Metodo para iniciar sesion en la aplicacion
      */
-    protected void iniciarSesion(String usuario, String contraseña){
-	this.
+    public void iniciarSesion(String nombreUsuario, String contraseña){
+	if(usuarioActivo != null) return;
+	Usuario usuario = this.usuarios.get(nombreUsuario);
+	if(usuario == null) throw new NullPointerException("No existe el usuario");
+	if(usuario.contraseña.equals(contraseña)){
+	    this.usuarioActivo = usuario;
+	}else{
+	    throw new IllegalArgumentException("Contraseña invalida");
+	}
+	
     }
 
     
