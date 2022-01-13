@@ -9,7 +9,7 @@ public class Vista{
 
 
     /**
-     * Metodo generalizado para facilitar el recibimiento de entradas por edio de la terminal
+     * Metodo generalizado para facilitar el recibimiento de entradas por medio de la terminal
      * @param int Numero de opciones que se le van a dar al usuario
      * @param String Mensaje que se mostrara en caso de que la entrada no sea valida
      * @return int Entrada dada por el usuario
