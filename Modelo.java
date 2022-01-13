@@ -1,4 +1,5 @@
 import java.util.Hashtable;
+import java.time.LocalDate;
 /**
  *Clase para la parte del modelo
  *Maneja la logistica del programa y el almacenamiento de los usuarios
@@ -15,16 +16,15 @@ public class Modelo{
     /**
      * Metodo para iniciar sesion en la aplicacion
      */
-    public void iniciarSesion(String nombreUsuario, String contraseña){
-	if(usuarioActivo != null) return;
-	Usuario usuario = this.usuarios.get(nombreUsuario);
-	if(usuario == null) throw new NullPointerException("No existe el usuario");
-	if(usuario.contraseña.equals(contraseña)){
-	    this.usuarioActivo = usuario;
+    public Usuario iniciarSesion(String nombreUsuario, String contraseña){
+	Usuario usuarioSupp = this.usuarios.get(nombreUsuario);
+	if(usuarioSupp == null) return null;
+	if(usuarioSupp.contraseña.equals(contraseña)){
+	    this.usuarioActivo = usuarioSupp;
+	    return usuarioSupp;
 	}else{
-	    throw new IllegalArgumentException("Contraseña invalida");
+	    return null;
 	}
-	
     }
 
     /**
@@ -38,8 +38,10 @@ public class Modelo{
      * Metodo para añadir un gasto a la cuenta
      * @param Gasto Gasto a añadir a la cuenta
      */
-    public void añadirGasto(Gasto gasto){
-	System.out.println("///////////////implementar////////");
+    public Gasto añadirGasto(long cantidad, String objeto, LocalDate fecha){
+	if(this.usuarioActivo == null) return null;
+	Gasto realizado = this.usuarioActivo.añadirGasto(cantidad, objeto, fecha);
+	return realizado;
     }
 
     
