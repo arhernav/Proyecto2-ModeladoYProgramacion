@@ -74,6 +74,17 @@ public class Usuario{
     }
 
     /**
+     * Metodo para desocntar dinero de la cuenta principal
+     * @param long Cantidad a descontar
+     * @return long Cantidad final de la cuenta
+     */
+    public long descontarCuenta(long cantidad){
+	if(cantidad < 0) return -1;
+	this.cuenta -= cantidad;
+	return this.cuenta;
+    }
+    
+    /**
      * Metodo para añadir ganancias a la cuenta de ahorro
      * @param long Cantidad de dinero que se sumara a la cuenta de ahorro
      * @return long Cantidad final de la cuenta de ahorro
@@ -83,6 +94,19 @@ public class Usuario{
 	this.cuentaAhorro += cantidad;
 	return this.cuentaAhorro;
     }
+
+    /**
+     * Metodo para añadir ganancias a la cuenta de ahorro
+     * @param long Cantidad de dinero que se sumara a la cuenta de ahorro
+     * @return long Cantidad final de la cuenta de ahorro
+     */
+    public long descontarAhorro(long cantidad){
+	if(cantidad < 0) return -1;
+	this.cuentaAhorro -= cantidad;
+	return this.cuentaAhorro;
+    }
+
+    
 
     /**
      * Metodo para revisar el dinero en la cuenta

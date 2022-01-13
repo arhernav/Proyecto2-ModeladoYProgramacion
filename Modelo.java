@@ -44,11 +44,46 @@ public class Modelo{
 	return realizado;
     }
 
-    
-    
+    /**
+     * Metodo para añadir dinero a la cuenta principal
+     * @param long Cantidad añadida a la cuenta
+     * @return Cantdad final de la cuenta
+     */
+    public long añadirCuenta(long cantidad){
+	if( this.usuarioActivo == null )return -1;
+	return this.usuarioActivo.añadirCuenta(cantidad);	
+    }
 
-    
-    
+    /**
+     * Metodo para añadir dinero a la cuenta principal
+     * @param long Cantidad añadida a la cuenta
+     * @return Cantdad final de la cuenta
+     */
+    public long añadirAhorro(long cantidad){
+	if( this.usuarioActivo == null )return -1;
+	return this.usuarioActivo.añadirAhorro(cantidad);	
+    }
 
+
+    /**
+     * Metodo para descontar de la cuenta principal del usuario
+     * @param long Cantidad a descontar de la cuenta principal
+     * @return long Total de la cuenta principal
+     */
+    public long descontarCuenta(long cantidad){
+	if(this.usuarioActivo == null)return -1;
+	return this.usuarioActivo.descontarCuenta(cantidad);
+    }
+
+    /**
+     * Metodo para descontar de la cuenta principal de ahorro
+     * @param long Cantidad a descontar de la cuenta de ahorro
+     * @return long Total de la cuenta de ahorro
+     */
+    public long descontarAhorro(long cantidad){
+	if(this.usuarioActivo == null)return -1;
+	return this.usuarioActivo.descontarAhorro(cantidad);
+    }
+    
     
 }
