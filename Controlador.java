@@ -6,22 +6,16 @@ public class Controlador{
     /* Modelo del proyecto */
     Modelo modelo;
     /* Vista de la aplicacion */
+    Vista vista;
 
     public Controlador(){
 	this.modelo = new Modelo();
+	this.vista = new Vista();
     }
 
     public void iniciarSesion(String nombreUsuario, String contraseña){
 	this.modelo.iniciarSesion(nombreUsuario, contraseña);
     }
-
-    public static void main(String[] args){
-	Controlador controlador = new Controlador();
-	try{
-	    controlador.iniciarSesion("hola", "cd");
-	}catch(NullPointerException e){
-	    System.out.println("Usuario no existente");
-	}
-    }
+    
     
 }
