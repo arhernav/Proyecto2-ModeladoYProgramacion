@@ -38,6 +38,17 @@ public class Usuario{
     }
 
     /**
+     * Constructor de usuario a base de un builder
+     * @param BuilderUsuario Constructor de usuario
+     */
+    public Usuario(BuilderUsuario constructor){
+	this.nombreUsuario = constructor.nombreUsuario;
+	this.contraseña = constructor.contraseña;
+	this.cuenta = constructor.cuenta;
+	this.cuentaAhorro = constructor.cuentaAhorro;
+    } 
+
+    /**
      * Getter para el nombre de usuario
      * @return String nombre de usuario del usuario
      */
@@ -142,12 +153,25 @@ public class Usuario{
 
     /**
      * Metodo para añadir una entrada a la agenda
+     * @param int año
+     * @param int mes
+     * @param int dia
+     * @param String registro
+     */
+    public String agregarEntrada(int año, int mes, int dia, String registro){
+	LocalDate fecha = LocalDate.of(año, mes, dia);
+	this.agenda.agregarEntrada(año, mes, dia ,  registro);
+	return registro + "fue agendado para " + fecha.toString();
+    }
+
+    /**
+     * Metodo para añadir una entrada a la agenda
      * @param LocalDate fecha
      * @param String registro
      */
-    public String agregarRegistros(LocalDate fecha, String registro){
-	this.agenda.agregarRegistros(LocalDate fecha, String registro);
-	return this.registro + "fue agendado para " + fecha;
+    public String agregarEntrada(LocalDate fecha, String registro){
+	this.agenda.agregarEntrada(fecha ,  registro);
+	return registro + "fue agendado para " + fecha.toString();
     }
 
     /**

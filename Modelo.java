@@ -101,9 +101,9 @@ public class Modelo{
      * @param LocalDate fecha del registro que se quiere añadir
      * @param String registro que se quiere añadir
      */
-    public String añadirRegistro(LocalDate fecha, String registro){
+    public String agregarEntrada(LocalDate fecha, String registro){
 	if(this.usuarioActivo == null)return null;
-	return this.usuarioActivo.añadirRegistro(fecha, registro);
+	return this.usuarioActivo.agregarEntrada(fecha, registro);
     }
 
     /**
@@ -114,6 +114,7 @@ public class Modelo{
 	if(usuario == null)throw new IllegalArgumentException("No se puede añadir null");
 	if(this.usuarios.contains(usuario.nombreUsuario)) return null;
 	this.usuarios.put(usuario.nombreUsuario, usuario);
+	return this.usuarios.get(usuario.nombreUsuario);
     }
 
     /**
