@@ -35,12 +35,14 @@ public class Modelo{
     }
 
     /**
-     * Metodo para añadir un gasto a la cuenta
+     * Metodo para añadir un gasto a la cuenta que ademas reduce la cantidad de dinero de la cuenta
      * @param Gasto Gasto a añadir a la cuenta
+     * @return Gasto Gasto creado que se añadio a la lista de gastos
      */
     public Gasto añadirGasto(long cantidad, String objeto, LocalDate fecha){
 	if(this.usuarioActivo == null) return null;
 	Gasto realizado = this.usuarioActivo.añadirGasto(cantidad, objeto, fecha);
+	this.descontarCuenta(cantidad);
 	return realizado;
     }
 
@@ -83,6 +85,60 @@ public class Modelo{
     public long descontarAhorro(long cantidad){
 	if(this.usuarioActivo == null)return -1;
 	return this.usuarioActivo.descontarAhorro(cantidad);
+    }
+
+    /**
+     * Metodo para revisar los gastos recientes del usuario
+     * @return String String conteniendo los datos recientes del usuario. Mensaje solicitando que se inicie sesion si no hay un usuario activo
+     */
+    public String gatGastosRecientes(){
+	if(this.usuarioActivo == null) return "Por favor inicie sesion";
+	return this.usuarioActivo.getGastosRecientes();
+    }
+
+    /**
+     * Metodo para añadir a la agenda
+     * @param LocalDate fecha del registro que se quiere añadir
+     * @param String registro que se quiere añadir
+     */
+    public String añadirRegistro(LocalDate fecha, String registro){
+	if(this.usuarioActivo == null)return null;
+	return this.usuarioActivo.añadirRegistro(fecha, registro);
+    }
+
+    /**
+     * Metodo para registrar usuarios nuevos (añadir observadores)
+     * @param Usuario
+     */
+    public Usuario añadirUsuario(Usuario usuario){
+	if(usuario == null)throw new IllegalArgumentException("No se puede añadir null");
+	if(this.usuarios.contains(usuario.nombreUsuario)) return null;
+	this.usuarios.put(usuario.nombreUsuario, usuario);
+    }
+
+    /**
+     * Metodo para eliminar un usuario del sistema
+     * @param String Nombre del usuario a eliminar
+     * @param String Contraseña del usuario a eliminar
+     */
+    public Usuario eliminarUsuario(String nombreUsuario, String contraseña){
+	Usuario supp = this.usuarios.get(nombreUsuario);
+	if(supp == null) return;
+	if(supp.contraseña.equals(contraseña)){
+	    this.usuarios.remove(nombreUsuario);
+	    return supp;
+	}else{
+	    return null;
+	}
+    }
+    
+    /**
+     * @param String Cadena con los eventos del dia del usuario. Cadena vacia si no hay nada
+     */
+    public String getEventos(){
+	if(this.usuarioActivo == null )return "";
+	if(!this.usuarioActivo.getEventos().equals(""))return "No hay eventos para el dia de hoy o para mañana";
+	return this.usuarioActivo.getEventos();
     }
     
     

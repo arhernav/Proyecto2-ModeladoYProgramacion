@@ -18,6 +18,8 @@ public class Usuario{
   long cuenta;
   /** Cuenta de ahorro (sólo si el usuario lo activa) */
   long cuentaAhorro;
+    /** Agenda del usuario */
+    Agenda agenda;
  
   //Método que muestra la lista de gastos del usuario.
   //////////////////////
@@ -32,6 +34,7 @@ public class Usuario{
 	this.opcionAhorro =  opcionAhorro;
 	this.cuenta = cuenta;
 	this.cuentaAhorro = cuentaAhorro;
+	this.agenda = new Agenda();
     }
 
     /**
@@ -137,8 +140,31 @@ public class Usuario{
 	return supp;
     }
 
+    /**
+     * Metodo para añadir una entrada a la agenda
+     * @param LocalDate fecha
+     * @param String registro
+     */
+    public String agregarRegistros(LocalDate fecha, String registro){
+	this.agenda.agregarRegistros(LocalDate fecha, String registro);
+	return this.registro + "fue agendado para " + fecha;
+    }
+
+    /**
+     * Metodo que devuelve todos los eventos agendados
+     * @return String String conteniendo todos los eventos de la agenda
+     */
+    public String revisarAgenda(){
+	return this.agenda.toString();
+    }
     
-    
+    /**
+     * Metodo que devuelve un String con los eventos agendados del dia
+     * @return String String conteniendo los eventos del dia
+     */
+    public String getEventos(){
+	return this.agenda.getEventos();
+    }
 
     
 
