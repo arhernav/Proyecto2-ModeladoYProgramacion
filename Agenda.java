@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Clase que registra los gastos que ha realizado el usuario.
@@ -21,8 +22,8 @@ public class Agenda{
      */
     public void generarFecha(int diaMes, int mes, int año){
       LocalDate fecha = LocalDate.of(año, mes, diaMes);
-      DateTimeFormatter fechaFormato = DateTimeFormatter.ofPattern("dd - MM - YYYY");
-      System.out.println(fechaFormato.format(fecha));
+      String fechaConFormato = fecha.format("dd/MM/YYYY");
+      System.out.println(fechaConFormato);
     }
     
     /**
@@ -62,15 +63,18 @@ public class Agenda{
   }
   
   /**
-   * Método busca concidencias entre la lista de fechas y la fecha del día de hoy
-   * para notificar al usuario sobre los pagos que tiene que realizar
-   * con un día de anticipación.
+   * Método que compara la fecha del día de hoy y otra fecha de la lista de entradas,
+   * si son iguales, regresa la fecha de hoy, en caso contrario, manda un mensaje.
+   * @return String 
    */
-  public void pagosARealizar(){
-    ////////////////////////////////
-    /**
-     * LocalDate -> CompareTo
-     */
+  public String pagosARealizar(String otraFecha){
+    LocalDate fechaHoy = LocalDate.now();
+    String fechaHoyConFormato = fechaHoy.format("dd/MM/YYYY");
+    if(fechaHoyConFormato == otraFecha){
+      return fechaConFormato;
+    }else{
+      return "No hay pagos por realizar";
+    }
   }
   
   /********************Calendario*/
