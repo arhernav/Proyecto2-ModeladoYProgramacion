@@ -123,7 +123,7 @@ public class Modelo{
      */
     public Usuario eliminarUsuario(String nombreUsuario, String contraseña){
 	Usuario supp = this.usuarios.get(nombreUsuario);
-	if(supp == null) return;
+	if(supp == null) return null;
 	if(supp.contraseña.equals(contraseña)){
 	    this.usuarios.remove(nombreUsuario);
 	    return supp;
@@ -139,6 +139,15 @@ public class Modelo{
 	if(this.usuarioActivo == null )return "";
 	if(!this.usuarioActivo.getEventos().equals(""))return "No hay eventos para el dia de hoy o para mañana";
 	return this.usuarioActivo.getEventos();
+    }
+
+    /**
+     * Metodo para obtener los recordatorios de dos dias despues
+     * @return String String con los eventos que sucederan en dos dias
+     */
+    public String recordatorio(){
+	if(this.usuarioActivo == null) return "";
+	return this.usuarioActivo.agenda.recordatorio();
     }
     
     
