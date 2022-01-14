@@ -4,7 +4,7 @@ import java.time.LocalDate;
 /**
  * Clase que contiene la información del Usuario requerida en la aplicación.
  */ 
-public class Usuario{
+public class Usuario implements Proxy{
     
   //Lista de gastos del usuario.
   LinkedList<Gasto> gastos;

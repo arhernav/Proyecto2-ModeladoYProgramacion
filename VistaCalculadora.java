@@ -33,7 +33,7 @@ public class VistaCalculadora implements TipoVista{
      * método get para obtener la cadena con el primer número
      * @return primer número
      */
-    public String getNumero(){
+    public String getNumero1(){
         return numero1;
     } 
     /**
