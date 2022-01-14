@@ -55,7 +55,7 @@ public class Agenda{
     LinkedList<EntradaAgenda> entradas = new LinkedList<>();
     
     /**
-     * Método para agregar nuevos registros a la agenda.
+     * Método para agregar una nueva entrada a la agenda.
      * @param int Año de la fecha que se quiere
      * @param int mes de la fecha que se quiere
      * @param inr dia de la fecha que se quiere
@@ -63,6 +63,18 @@ public class Agenda{
      */
     public void agregarEntrada(int año, int mes, int dia, String registro){
 	LocalDate fecha = this.generarFecha(año, mes, dia);
+	EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
+	this.entradas.add(entrada);
+    }
+
+    /**
+     * Método para agregar una nueva entrada a la agenda.
+     * @param int Año de la fecha que se quiere
+     * @param int mes de la fecha que se quiere
+     * @param inr dia de la fecha que se quiere
+     * @param registro que se guardara junto con la fecha
+     */
+    public void agregarEntrada(LocalDate fecha, String registro){
 	EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
 	this.entradas.add(entrada);
     }
@@ -98,7 +110,7 @@ public class Agenda{
      */
     public String getEventos(){
 	String supp = "";
-	LocalDate fechaSistema;
+	LocalDate fechaSistema = LocalDate.now();
 	for(EntradaAgenda entrada : this.entradas){
 	    if( entrada.fecha.equals(fechaSistema) ){
 		supp = supp + entrada.toString();
@@ -112,14 +124,15 @@ public class Agenda{
     }
     
     /**
-     * Metodo para enviar avisos de eventos un dia antes
+     * Metodo que revisa todas las entradas en la agenda y crea un Strng con las
+     * entradas que estan por suceder al siguiente dia
      * @param String 
      */
     public String recordatorio(){
 	String supp = "";
-	LocalDate fechaSistema;
+	LocalDate fechaSistema = LocalDate.now();
 	for(EntradaAgenda entrada : this.entradas){
-	    if( entrada.fecha.minusDays(2).equals(fechaSistema) ){
+	    if( entrada.fecha.minusDays(1).equals(fechaSistema) ){
 		supp = supp + entrada.toString();
 	    }
 	}
