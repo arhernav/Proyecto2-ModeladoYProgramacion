@@ -9,7 +9,6 @@ public class Vista{
     public ConUsuario conUsuario = new ConUsuario();
     public SinUsuario sinUsuario = new SinUsuario();
     public VistaRegistro vistaRegistro = new VistaRegistro();
-    public VistaCalculadora vistaCalculadora = new VistaCalculadora();
 
     /**
      * Metodo generalizado para facilitar el recibimiento de entradas por medio de la terminal
