@@ -13,8 +13,7 @@ public class SinUsuario implements TipoVista{
         System.out.println("*******************************"+
         "Esta es la vista sin usuario, para escoger una opcion ingrese unicamente el digito de la opcion que desea\n"+
         "Opciones:\n1.- para registrarse\n" +
-			   "2.- Iniciar Sesion\n" +
-			   "3.- Calculadora\n");
+			   "2.- Iniciar Sesion\n");
     }
 
     /**

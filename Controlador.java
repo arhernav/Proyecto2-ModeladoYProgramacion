@@ -66,8 +66,10 @@ public class Controlador{
     public void manejarCuenta(){
 	this.vista.conUsuario.opcionesCuentas();
 	if(this.vista.entradaOpciones(2, "Digite una de las opciones mencionadas") == 1){
+	    this.vista.salida("Cuánto quiere añadir?");
 	    this.modelo.añadirCuenta(this.vista.entradaLong(Long.MAX_VALUE, "No se pueden ingresar numeros negativos ni mayores a 9,223,372,036,854,775,807"));
 	}else{
+	    this.vista.salida("Cuánto quiere retirar?");
 	    this.modelo.descontarCuenta(this.vista.entradaLong(Long.MAX_VALUE, "No se pueden ingresar numeros negativos ni mayores a 9,223,372,036,854,775,807"));
 	}
     }
@@ -75,8 +77,10 @@ public class Controlador{
     public void manejarCuentaAhorro(){
 	this.vista.conUsuario.opcionesCuentas();
 	if(this.vista.entradaOpciones(2, "Digite una de las opciones mencionadas") == 1){
+	    this.vista.salida("Cuánto quiere añadir?");
 	    this.modelo.añadirAhorro(this.vista.entradaLong(Long.MAX_VALUE, "No se pueden ingresar numeros negativos ni mayores a 9,223,372,036,854,775,807"));
 	}else{
+	    this.vista.salida("Cuánto quiere retirar?");
 	    this.modelo.descontarAhorro(this.vista.entradaLong(Long.MAX_VALUE, "No se pueden ingresar numeros negativos ni mayores a 9,223,372,036,854,775,807"));
 	}
     }
@@ -145,12 +149,11 @@ public class Controlador{
 
     public void menuSinUsuario(){
 	this.vista.sinUsuario.mostrarOpciones();
-	switch(this.vista.entradaOpciones(3, "Indique la opcion que desea")){
+	switch(this.vista.entradaOpciones(2, "Indique la opcion que desea")){
 	case 1: this.registrarse();
 	    break;
 	case 2: this.iniciarSesion();
 	    break;
-	case 3: System.out.println("Proximamente");
 	}
     }
 

@@ -7,7 +7,7 @@ public class ConUsuario implements TipoVista{
     @Override
     public void mostrarOpciones(){
         System.out.println("*******************************\n"+
-        "bienvenido, para escoger una opción usa 1 o 2\n"+
+        "bienvenido, para escoger una opción ingresa unicamente el digito de la opcion\n"+
         "Opciones:\n" +
 			   "1.- Revisar la cuent principal\n" +
 			   "2.- Revisar la cuenta de ahorros\n" +
@@ -22,7 +22,7 @@ public class ConUsuario implements TipoVista{
 
     public void opcionesCuentas(){
 	System.out.println("Desea añadir o retirar de su cuenta");
-	System.out.println("1.- Añadir dinero a la cuenta principal");
-	System.out.println("2.- Retirar de la cuenta principal");	
+	System.out.println("1.- Añadir dinero a la cuenta");
+	System.out.println("2.- Retirar de la cuenta");	
     }
 }
