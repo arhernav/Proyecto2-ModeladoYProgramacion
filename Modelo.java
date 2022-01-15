@@ -104,6 +104,16 @@ public class Modelo{
 	return d;
     }
 
+    public long revisarCuenta(){
+	if(this.usuarioActivo == null) return -1;
+	return this.usuarioActivo.getCuenta();
+    }
+
+    public long revisarCuentaAhorro(){
+	if(this.usuarioActivo == null) return -1;
+	return this.usuarioActivo.getCuentaAhorro();
+    }
+
     /**
      * Metodo para revisar los gastos recientes del usuario
      * @return String String conteniendo los datos recientes del usuario. Mensaje solicitando que se inicie sesion si no hay un usuario activo
@@ -163,8 +173,7 @@ public class Modelo{
      * @param String Cadena con los eventos del dia del usuario. Cadena vacia si no hay nada
      */
     public String getEventos(){
-	if(this.usuarioActivo == null )return "";
-	if(!this.usuarioActivo.getEventos().equals(""))return "No hay eventos para el dia de hoy o para mañana";
+	if(this.usuarioActivo == null )return "";;
 	return this.usuarioActivo.getEventos();
     }
 
@@ -176,6 +185,10 @@ public class Modelo{
 	if(this.usuarioActivo == null) return "";
 	return this.usuarioActivo.agenda.recordatorio();
     }
-    
+
+    public boolean checarUsuario(){
+	if(this.usuarioActivo == null)return false;
+	return true;
+    }
     
 }
