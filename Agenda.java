@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Clase que registra los gastos que ha realizado el usuario.
@@ -26,8 +25,8 @@ public class Agenda{
        * Constructor de la clase
        */
       public EntradaAgenda(LocalDate fecha, String registro){
-	  this.fecha = fecha;
-	  this.registro = registro;
+   this.fecha = fecha;
+   this.registro = registro;
       }
 
       /**
@@ -35,8 +34,8 @@ public class Agenda{
        * @return String Representacion en cadena del objeto
        */
       @Override public String toString(){
-	  return "\n" + this.fecha.toString() + "\n" +
-	      this.registro ;
+   return "\n" + this.fecha.toString() + "\n" +
+       this.registro ;
       }
 
       
@@ -62,9 +61,9 @@ public class Agenda{
      * @param registro que se guardara junto con la fecha
      */
     public void agregarEntrada(int año, int mes, int dia, String registro){
-	LocalDate fecha = this.generarFecha(año, mes, dia);
-	EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
-	this.entradas.add(entrada);
+ LocalDate fecha = this.generarFecha(año, mes, dia);
+ EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
+ this.entradas.add(entrada);
     }
 
     /**
@@ -75,17 +74,17 @@ public class Agenda{
      * @param registro que se guardara junto con la fecha
      */
     public void agregarEntrada(LocalDate fecha, String registro){
-	EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
-	this.entradas.add(entrada);
+ EntradaAgenda entrada = new EntradaAgenda(fecha, registro);
+ this.entradas.add(entrada);
     }
     
     /**
      * Método para remover registros de la agenda.
      */
     public void removerRegistros(String registro){
-	for(EntradaAgenda entrada: this.entradas){
-	    if( entrada.registro.equals(registro) ) this.entradas.remove(entrada);
-	}
+ for(EntradaAgenda entrada: this.entradas){
+     if( entrada.registro.equals(registro) ) this.entradas.remove(entrada);
+ }
     }
   
     /**
@@ -101,7 +100,7 @@ public class Agenda{
      * @return String representacion en cadena de la clase
      */
     @Override public String toString(){
-	return this.entradas.toString();
+ return this.entradas.toString();
     }
 
     /**
@@ -109,18 +108,18 @@ public class Agenda{
      * @return String Cadena con todos los eventos del dia
      */
     public String getEventos(){
-	String supp = "";
-	LocalDate fechaSistema = LocalDate.now();
-	for(EntradaAgenda entrada : this.entradas){
-	    if( entrada.fecha.equals(fechaSistema) ){
-		supp = supp + entrada.toString();
-	    }
-	}
-	if(supp.equals("")){
-	    return "No tienes eventos hoy";
-	}else{
-	    return supp;
-	}
+ String supp = "";
+ LocalDate fechaSistema = LocalDate.now();
+ for(EntradaAgenda entrada : this.entradas){
+     if( entrada.fecha.equals(fechaSistema) ){
+  supp = supp + entrada.toString();
+     }
+ }
+ if(supp.equals("")){
+     return "No tienes eventos hoy";
+ }else{
+     return supp;
+ }
     }
     
     /**
@@ -129,17 +128,17 @@ public class Agenda{
      * @param String 
      */
     public String recordatorio(){
-	String supp = "";
-	LocalDate fechaSistema = LocalDate.now();
-	for(EntradaAgenda entrada : this.entradas){
-	    if( entrada.fecha.minusDays(1).equals(fechaSistema) ){
-		supp = supp + entrada.toString();
-	    }
-	}
-	if(!supp.equals("")){
-	    supp = "Recuerda que en dos dias tienes los siguientes eventos: \n" + supp;
-	}
-	return supp;
+ String supp = "";
+ LocalDate fechaSistema = LocalDate.now();
+ for(EntradaAgenda entrada : this.entradas){
+     if( entrada.fecha.minusDays(1).equals(fechaSistema) ){
+  supp = supp + entrada.toString();
+     }
+ }
+ if(!supp.equals("")){
+     supp = "Recuerda que en dos dias tienes los siguientes eventos: \n" + supp;
+ }
+ return supp;
     }
     
 }
