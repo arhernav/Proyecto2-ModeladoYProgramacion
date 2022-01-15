@@ -108,7 +108,7 @@ public class Modelo{
      * Metodo para revisar los gastos recientes del usuario
      * @return String String conteniendo los datos recientes del usuario. Mensaje solicitando que se inicie sesion si no hay un usuario activo
      */
-    public String gatGastosRecientes(){
+    public String getGastosRecientes(){
 	if(this.usuarioActivo == null) return "Por favor inicie sesion";
 	return this.usuarioActivo.getGastosRecientes();
     }
@@ -121,6 +121,15 @@ public class Modelo{
     public String agregarEntrada(LocalDate fecha, String registro){
 	if(this.usuarioActivo == null)return null;
 	return this.usuarioActivo.agregarEntrada(fecha, registro);
+    }
+
+    /**
+     * Metodo para obtener la agenda del usuario
+     * @return String Representacion en cadena de la agenda del usuario
+     */
+    public String getAgenda(){
+	if(this.usuarioActivo == null) return "Porfavor inicie sesion";
+	return this.usuarioActivo.agenda.toString();
     }
 
     /**
