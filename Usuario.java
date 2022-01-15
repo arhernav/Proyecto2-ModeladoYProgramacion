@@ -19,7 +19,7 @@ public class Usuario implements Proxy{
     /** Agenda del usuario */
     Agenda agenda;
     /** Instancia unica de proxy para el usuario*/
-    UsuarioProxy usuarioProxy = new UsuarioProxy(this);
+    UsuarioProxy usuarioProxy;
  
   //Método que muestra la lista de gastos del usuario.
   //////////////////////
@@ -34,6 +34,8 @@ public class Usuario implements Proxy{
 	this.cuenta = cuenta;
 	this.cuentaAhorro = cuentaAhorro;
 	this.agenda = new Agenda();
+	this.gastos = new LinkedList<Gasto>();
+	this.usuarioProxy = new UsuarioProxy(this);
     }
 
     
@@ -48,6 +50,8 @@ public class Usuario implements Proxy{
 	this.cuenta = constructor.cuenta;
 	this.cuentaAhorro = constructor.cuentaAhorro;
 	this.agenda = new Agenda();
+	this.gastos = new LinkedList<Gasto>();
+	this.usuarioProxy = new UsuarioProxy(this);
     }
 
     /**
