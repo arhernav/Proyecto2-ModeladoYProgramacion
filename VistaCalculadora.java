@@ -13,7 +13,7 @@ public class VistaCalculadora implements TipoVista{
     @Override
     public void mostrarOpciones(){
         System.out.println("*******************************\n"+
-        "Bienvenido a nuestra calculadora, para poder realizar operaciones\n"+
+        "Bienvenido a nuestra calculadora, esta calculadora solo trabaja con enteros, para poder realizar operaciones\n"+
         "es necesario introducir dos números y el símbolo de a operación\n"+
         "los símbolos válidos para la calculadora son: '+' '-' '*' '/' y  '%' para sacar porcentajes\n"+
         "NOTA: para el porcentaje es necesario que el primer número sea el monto de dinero y el segundo el porcentaje a sacar.\n"+
