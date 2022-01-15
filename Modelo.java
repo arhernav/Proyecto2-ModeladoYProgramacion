@@ -12,6 +12,11 @@ public class Modelo{
     /* Usuario que esta usando la aplicacion */
     protected Usuario usuarioActivo;
 
+    
+    public Modelo(){
+	this.usuarios = new Hashtable<String, Usuario>();
+	this.usuarioActivo = null;
+    }
 
     /**
      * Metodo para iniciar sesion en la aplicacion
@@ -52,8 +57,11 @@ public class Modelo{
      * @return Cantdad final de la cuenta
      */
     public long añadirCuenta(long cantidad){
-	if( this.usuarioActivo == null )return -1;
-	return this.usuarioActivo.añadirCuenta(cantidad);	
+	if(this.usuarioActivo == null) return -1;
+	UsuarioProxy proxy = this.usuarioActivo.getUsuarioProxy();
+	long  d = proxy.añadirCuenta(cantidad);
+	proxy.actualizarOriginal();
+	return d;
     }
 
     /**
@@ -62,8 +70,11 @@ public class Modelo{
      * @return Cantdad final de la cuenta
      */
     public long añadirAhorro(long cantidad){
-	if( this.usuarioActivo == null )return -1;
-	return this.usuarioActivo.añadirAhorro(cantidad);	
+        if(this.usuarioActivo == null) return -1;
+	UsuarioProxy proxy = this.usuarioActivo.getUsuarioProxy();
+	long d = proxy.añadirAhorro(cantidad);
+	proxy.actualizarOriginal();
+	return d;
     }
 
 
@@ -73,8 +84,11 @@ public class Modelo{
      * @return long Total de la cuenta principal
      */
     public long descontarCuenta(long cantidad){
-	if(this.usuarioActivo == null)return -1;
-	return this.usuarioActivo.descontarCuenta(cantidad);
+        if(this.usuarioActivo == null) return -1;
+	UsuarioProxy proxy = this.usuarioActivo.getUsuarioProxy();
+	long d = proxy.descontarCuenta(cantidad);
+	proxy.actualizarOriginal();
+	return d;
     }
 
     /**
@@ -83,8 +97,11 @@ public class Modelo{
      * @return long Total de la cuenta de ahorro
      */
     public long descontarAhorro(long cantidad){
-	if(this.usuarioActivo == null)return -1;
-	return this.usuarioActivo.descontarAhorro(cantidad);
+        if(this.usuarioActivo == null) return -1;
+	UsuarioProxy proxy = this.usuarioActivo.getUsuarioProxy();
+	long d = proxy.descontarAhorro(cantidad);
+	proxy.actualizarOriginal();
+	return d;
     }
 
     /**
