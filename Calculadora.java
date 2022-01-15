@@ -4,7 +4,6 @@
 public class Calculadora {
     String numero;
     String numero2;
-    String operador;
     String resultado;
     int aux1;
     int aux2;
