@@ -9,11 +9,17 @@ public class Controlador{
     /* Vista de la aplicacion */
     Vista vista;
 
+    /**
+     * Constructor de la clase
+     */
     public Controlador(){
 	this.modelo = new Modelo();
 	this.vista = new Vista();
     }
 
+    /**
+     * Metod para iniciar sesion en el modelo
+     */
     public void iniciarSesion(){
 	this.vista.salida("Ingrese su nombre de usuario");
 	String nombreUsuario = this.vista.entrada();
@@ -24,10 +30,16 @@ public class Controlador{
 	}
     }
 
+    /**
+     * Metodo para cerrar sesion en el modelo
+     */
     public void cerrarSesion(){
 	this.modelo.cerrarSesion();
     }
 
+    /**
+     * Metodo que registra un usario en el modelo
+     */
     public void registrarse(){
 	this.vista.vistaRegistro.mostrarOpciones();
 	this.vista.salida("Indique su nombre de usuario deseado");
@@ -47,6 +59,9 @@ public class Controlador{
 	this.vista.salida("Se registro al usuario " + usuarioNuevo.toString());
     }
 
+    /**
+     * Metodo que elimina un usario de modelo
+     */
     public void eliminarUsuario(){
 	this.vista.salida("Ingrese su nombre de usuario");
 	String nombreSupp = this.vista.entrada();
@@ -55,14 +70,23 @@ public class Controlador{
 	this.modelo.eliminarUsuario(nombreSupp, contraseñaSupp);
     }
 
+    /**
+     * Muestra la cantidad de dinero en la cuenta principal
+     */
     public void revisarCuenta(){
 	this.vista.salida("Tu cuenta principal tiene: " + this.modelo.revisarCuenta());
     }
 
+    /**
+     * Muestra la cantidad de dinero en la cuenta de ahorro
+     */
     public void revisarCuentaAhorro(){
 	this.vista.salida("Tu cuenta de ahorro tiene: " + this.modelo.revisarCuentaAhorro());
     }
 
+    /**
+     * Permite añadir o quitar dinero de la cuenta principal
+     */
     public void manejarCuenta(){
 	this.vista.conUsuario.opcionesCuentas();
 	if(this.vista.entradaOpciones(2, "Digite una de las opciones mencionadas") == 1){
@@ -74,6 +98,9 @@ public class Controlador{
 	}
     }
 
+    /**
+     * Permite añadir o quitar dinero de la cuenta de ahorro
+     */
     public void manejarCuentaAhorro(){
 	this.vista.conUsuario.opcionesCuentas();
 	if(this.vista.entradaOpciones(2, "Digite una de las opciones mencionadas") == 1){
@@ -85,6 +112,9 @@ public class Controlador{
 	}
     }
 
+    /**
+     * Metodo para añadir una entrada a la agenda del usuario
+     */
     public void añadirEntrada(){
 	this.vista.salida("Que fecha quiere para esta entrada de la agenda");
 	this.vista.salida("Año de la entrada");
@@ -97,13 +127,19 @@ public class Controlador{
 	String evento = this.vista.entrada();
 	LocalDate fecha = LocalDate.of(año, mes, dia);
 	this.modelo.agregarEntrada(fecha, evento);
-	this.vista.salida("Su evento" + evento + "quedo agendado para " + fecha.toString());	
+	this.vista.salida("Su evento " + evento + " quedo agendado para " + fecha.toString());	
     }
 
+    /**
+     * Metodo que devuelve la agenda 
+     */
     public void revisarAgenda(){
 	this.vista.salida(this.modelo.getAgenda());
     }
 
+    /**
+     * Metodo para añadr un gasto a la lista de gastos 
+     */
     public void añadirGasto(){
 	this.vista.salida("Cuando se realizo el gasto?");
 	LocalDate fecha = this.recibirFecha();
@@ -115,10 +151,16 @@ public class Controlador{
 	
     }
 
+    /**
+     * Metodo para revisar los gastos recientes del usuario
+     */
     public void revisarGastos(){
 	this.vista.salida(this.modelo.getGastosRecientes());
     }
 
+    /**
+     * Metodo para facilitar el recibir fechas
+     */
     public LocalDate recibirFecha(){
 	this.vista.salida("Año de la entrada");
 	int año = this.vista.entradaOpciones(3000, "No se pueden agendar cosas mas alla del año 3000");
@@ -129,6 +171,9 @@ public class Controlador{
 	return LocalDate.of(año, mes, dia);
     }
 
+    /**
+     * Metodo para ejecutar los menus en el orden adecuado
+     */
     public void ejecucionPrincipal(){
 	boolean terminar = false;
 
@@ -147,6 +192,9 @@ public class Controlador{
 	
     }
 
+    /**
+     * Menu para cuando no hay un usuario activo
+     */
     public void menuSinUsuario(){
 	this.vista.sinUsuario.mostrarOpciones();
 	switch(this.vista.entradaOpciones(2, "Indique la opcion que desea")){
@@ -157,6 +205,9 @@ public class Controlador{
 	}
     }
 
+    /**
+     * Menu para las notificaciones diarias
+     */
     public String diario(){
 	if(this.modelo.getEventos().equals("")){
 	    return "No hay eventos hoy";
@@ -164,7 +215,10 @@ public class Controlador{
 	    return "Eventos de hoy\n" + this.modelo.getEventos();
 	}
     }
-    
+
+    /**
+     * Menu para cuando haya un usuario activo
+     */
     public void menuConUsuario(){
 	
 	this.vista.salida(this.diario());
