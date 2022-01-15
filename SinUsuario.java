@@ -4,7 +4,6 @@ import java.util.Scanner;
  */
 
 public class SinUsuario implements TipoVista{
-    String opcion = "";
     /**
      * implementación del método en la interfaz TipoVista para la vista de la app
      * sin usuario
@@ -12,34 +11,19 @@ public class SinUsuario implements TipoVista{
     @Override
     public void mostrarOpciones(){
         System.out.println("*******************************"+
-        "Esta es la vista sin usuario, para escoger una opción usa 1 o 2\n"+
-        "Opciones:\n 1 para registrarse\n 2 para usar la calculadora");
-        Scanner scOpcion = new Scanner(System.in);
-        opcion = scOpcion.nextLine();
-        System.out.println("*******************************");
+        "Esta es la vista sin usuario, para escoger una opcion ingrese unicamente el digito de la opcion que desea\n"+
+        "Opciones:\n1.- para registrarse\n" +
+			   "2.- Iniciar Sesion\n" +
+			   "3.- Calculadora\n");
     }
+
     /**
-     * método get para obtener la cadena con la opcion seleccionada
-     * @return opcion seleccionada
+     * Imprime opciones para la cuenta
      */
-    public String getOpcion(){
-        return opcion;
+    public void opcionesInicioCuenta(){
+	System.out.println("Desea inicar sus cuentas en 0?");
+	System.out.println("1.- Iniciar cuentas en 0");
+	System.out.println("2.- Ingresar valores de inicio para las cuentas");
     }
-    /**
-     * método set para modificar la opcion
-     * @param u opcion
-     */
-    public void setOpcion(String o){
-        opcion = o;
-    }
-    /**
-     * método para ver lo que metío el usuario en la vista y usarlo en controlador
-     * @return cadena llenada en términal (opcion seleccionada)
-     */
-    public String controladorOpcion(){
-        if(opcion.equals("")){
-            return "error";
-        }
-        return opcion;
-    }
+
 }

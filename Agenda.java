@@ -108,18 +108,14 @@ public class Agenda{
      * @return String Cadena con todos los eventos del dia
      */
     public String getEventos(){
-	String supp = "";
+	String supp = "\n";
 	LocalDate fechaSistema = LocalDate.now();
 	for(EntradaAgenda entrada : this.entradas){
 	    if( entrada.fecha.equals(fechaSistema) ){
-		supp = supp + entrada.toString();
+		supp = supp + entrada.toString() + "\n";
 	    }
 	}
-	if(supp.equals("")){
-	    return "No tienes eventos hoy";
-	}else{
-	    return supp;
-	}
+	return supp;
     }
     
     /**

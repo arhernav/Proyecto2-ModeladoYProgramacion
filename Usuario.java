@@ -166,11 +166,7 @@ public class Usuario implements Proxy{
     public String getGastosRecientes(){
 	if(this.gastos.isEmpty())
 	    return "No se ha registrado ningun gasto en la cuenta";
-	String supp = "";
-	for(Gasto gasto : this.gastos){
-	    supp += "\n" + gasto.toString();
-	}
-	return supp;
+	return this.gastos.toString();
     }
 
     /**

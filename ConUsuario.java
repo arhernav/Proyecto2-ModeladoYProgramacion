@@ -8,34 +8,21 @@ public class ConUsuario implements TipoVista{
     public void mostrarOpciones(){
         System.out.println("*******************************\n"+
         "bienvenido, para escoger una opción usa 1 o 2\n"+
-        "Opciones:\n 1 para ver el saldo\n 2 para ver el historial de gastos\n"+
-        "3 crear opcion de ahorro\n 4 para ver la agenda\n 5 para usar la calculadora");
-        Scanner scOpcion = new Scanner(System.in);
-        opcion = scOpcion.nextLine();
-        System.out.println("*******************************");
+        "Opciones:\n" +
+			   "1.- Revisar la cuent principal\n" +
+			   "2.- Revisar la cuenta de ahorros\n" +
+			   "3.- Añadir o retirar de la cuenta principal\n" +
+			   "4.- Añadir o retirar de la cuenta de ahorro\n" +
+			   "5.- Añadir una entrada a la agenda\n" +
+			   "6.- Revisar la agenda\n" +
+			   "7.- Añadir un nuevo gasto\n" +
+			   "8.- Revisar los gastos recientes\n" +
+			   "9.- Cerrar sesion\n");
     }
-    /**
-     * método get para obtener la cadena con la opcion seleccionada
-     * @return opcion seleccionada
-     */
-    public String getOpcion(){
-        return opcion;
-    }
-    /**
-     * método set para modificar la opcion
-     * @param u opcion
-     */
-    public void setOpcion(String o){
-        opcion = o;
-    }
-    /**
-     * método para ver lo que metío el usuario en la vista y usarlo en controlador
-     * @return cadena llenada en términal (opcion seleccionada)
-     */
-    public String controladorOpcion(){
-        if(opcion.equals("")){
-            return "error";
-        }
-        return opcion;
+
+    public void opcionesCuentas(){
+	System.out.println("Desea añadir o retirar de su cuenta");
+	System.out.println("1.- Añadir dinero a la cuenta principal");
+	System.out.println("2.- Retirar de la cuenta principal");	
     }
 }
