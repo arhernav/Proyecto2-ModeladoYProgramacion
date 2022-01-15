@@ -47,6 +47,7 @@ public class Usuario implements Proxy{
 	this.contraseña = constructor.contraseña;
 	this.cuenta = constructor.cuenta;
 	this.cuentaAhorro = constructor.cuentaAhorro;
+	this.agenda = new Agenda();
     }
 
     /**
@@ -207,7 +208,13 @@ public class Usuario implements Proxy{
 	return this.agenda.getEventos();
     }
 
-    
+    /**
+     * Metodo toString 
+     * @rturn String representacion en cadena del objeto
+     */
+    @Override public String toString(){
+	return this.nombreUsuario + " Cuenta: " + this.cuenta;
+    }
 
 
     

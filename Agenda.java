@@ -35,8 +35,8 @@ public class Agenda{
        * @return String Representacion en cadena del objeto
        */
       @Override public String toString(){
-	  return "\t\t" + this.fecha.toString() + "\n\t" +
-	      this.registro + "\n" ;
+	  return "\n" + this.fecha.toString() + "\n" +
+	      this.registro ;
       }
 
       

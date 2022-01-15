@@ -17,8 +17,8 @@ public class UsuarioProxy implements Proxy{
      */
     public UsuarioProxy(Usuario usuario){
 	this.cliente = usuario;
-	this.cuentaProxy = usuario.getCuenta();
-	this.ahorroProxy = usuario.getCuentaAhorro();
+	this.cuentaProxy = usuario.cuenta;
+	this.ahorroProxy = usuario.cuentaAhorro;
     }
 
     /**
@@ -28,7 +28,7 @@ public class UsuarioProxy implements Proxy{
      */
     public long añadirCuenta(long cantidad){
 	if(cantidad < 0) return -1;
-	this.cuentaProxy += cantidad;
+	this.cuentaProxy = this.cuentaProxy + cantidad;
 	return this.cuentaProxy;
     }
 
