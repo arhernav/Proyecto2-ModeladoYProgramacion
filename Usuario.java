@@ -12,14 +12,14 @@ public class Usuario implements Proxy{
   String nombreUsuario;
   /** Contraseña del usuario para iniciar sesión */
   String contraseña;
-  /** Opción de ahorro (sólo si el usuario lo activa) */
-  boolean opcionAhorro;
   /** Cuenta del usuario */
   long cuenta;
   /** Cuenta de ahorro (sólo si el usuario lo activa) */
   long cuentaAhorro;
     /** Agenda del usuario */
     Agenda agenda;
+    /** Instancia unica de proxy para el usuario*/
+    UsuarioProxy usuarioProxy = new UsuarioProxy(this);
  
   //Método que muestra la lista de gastos del usuario.
   //////////////////////
@@ -31,11 +31,12 @@ public class Usuario implements Proxy{
     private Usuario(String nombreUsuario, String contraseña, boolean opcionAhorro, long cuenta, long cuentaAhorro){
 	this.nombreUsuario = nombreUsuario;
 	this.contraseña = contraseña;
-	this.opcionAhorro =  opcionAhorro;
 	this.cuenta = cuenta;
 	this.cuentaAhorro = cuentaAhorro;
 	this.agenda = new Agenda();
     }
+
+    
 
     /**
      * Constructor de usuario a base de un builder
@@ -46,7 +47,23 @@ public class Usuario implements Proxy{
 	this.contraseña = constructor.contraseña;
 	this.cuenta = constructor.cuenta;
 	this.cuentaAhorro = constructor.cuentaAhorro;
-    } 
+    }
+
+    /**
+     * Metodo que actualiza la informacion del usuairo de acuerdo al proxy
+     */ 
+    protected void actualizacionProxy(){
+	this.cuenta = this.usuarioProxy.cuentaProxy;
+	this.cuentaAhorro = this.usuarioProxy.ahorroProxy;
+    }
+
+    /**
+     * Metodo para obtener la unica instancia de proxy para este usurio
+     * @return UsuarioProxy Proxy exclusivo de este usuario
+     */
+    public UsuarioProxy getUsuarioProxy(){
+	return this.usuarioProxy;
+    }
 
     /**
      * Getter para el nombre de usuario
